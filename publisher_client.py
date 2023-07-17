@@ -1,32 +1,30 @@
 import paho.mqtt.client as mqtt
-import json
 
 
-MQTT_HOST = "localhost"
-MQTT_PORT = 1883
-topic = "weather"
-payload = json.dumps({"temp": "84", "feels_like": "90", "wind": "5", "uv": "0", "humidity": "70", "loc": "Florida"})
+class PublisherClient:
+    MQTT_HOST = "localhost"
+    MQTT_PORT = 1883
+    topic = "weather"
 
+    def on_publish(self, client,userdata,result):             #create function for callback
+        print("data published \n")
+        pass
 
-def on_publish(client,userdata,result):             #create function for callback
-    print("data published \n")
-    pass
+    def on_connect(self, client, userdata, flags, rc):
+        global Connected
+        if rc == 0:
+            print("Connected to broker")
+            Connected = True  # Signal connection
 
+        else:
+            print("Connection failed")
 
-def on_connect(client, userdata, flags, rc):
-    global Connected
-    if rc == 0:
-        print("Connected to broker")
-        Connected = True  # Signal connection
+    def connect(self):
+        # Create an MQTT client and connect to the broker
+        client = mqtt.Client("MQTT")
+        client.on_connect = self.on_connect
+        client.on_publish = self.on_publish
+        client.connect(self.MQTT_HOST, port=self.MQTT_PORT)
 
-    else:
-        print("Connection failed")
-
-
-# Create an MQTT client and connect to the broker
-client = mqtt.Client("MQTT")
-client.on_connect = on_connect
-client.on_publish = on_publish
-client.connect(MQTT_HOST, port=MQTT_PORT)
-
-client.publish(topic, payload)
+    def publish_data(self, payload):
+        self.client.publish(self.topic, payload)

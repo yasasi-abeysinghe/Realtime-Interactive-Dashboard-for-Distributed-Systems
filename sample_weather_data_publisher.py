@@ -2,7 +2,9 @@ import random
 import time
 import numpy as np
 import json
-from publisher_client import client, topic
+from publisher_client import PublisherClient
+
+publisher = PublisherClient.connect()
 
 while True:
     temp = random.randint(50, 100)
@@ -13,5 +15,5 @@ while True:
     location = np.random.choice(["New York", "Houston", "LA"])
     payload = json.dumps({"temp": temp, "feels_like": feels_like, "wind": wind, "uv": uv, "humidity": humidity,
                           "loc": location})
-    client.publish(topic, payload)
+    publisher.publish(payload)
     time.sleep(1)
