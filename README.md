@@ -33,3 +33,6 @@ publisher.publish(payload)
 We implemented a dashboard client that allows our real-time weather data visualization application to connect to the MQTT broker, subscribe to a topic, receive weather data from publisher devices, emit the data into the data stream, and visualize the data in an interactive dashboard.
 
 * Run the dashboard client at `dashboard_client.py`
+
+### Sample Visualization Dashboard
+![](sample_dashboard.png)
