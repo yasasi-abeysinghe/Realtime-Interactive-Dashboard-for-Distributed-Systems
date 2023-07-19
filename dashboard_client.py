@@ -96,7 +96,7 @@ def start_server():
         title='Real-time Interactive Dashboard for Data in a Distributed System',
         sidebar=[pn.pane.Markdown("# Weather Dashboard"),
                  pn.pane.Markdown("### Visualization of real-time weather data collected from multiple locations."),
-                 pn.pane.PNG('image.png', sizing_mode='scale_both'),
+                 pn.pane.PNG('logo.png', sizing_mode='scale_both'),
                  pn.pane.Markdown('<br/><br/><br/>'),
                  pn.pane.Markdown('### Date:'),
                  today,
