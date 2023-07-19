@@ -30,4 +30,6 @@ publisher.publish(payload)
 
 ### Dashboard Client
 
-this visualization dashboard, we plot different weather data such as temperature, wind speed, humidity, etc. over time by location in real-time. Hvplot.pandas allows us to create interactive dataframes. Panel has a lot of dashboarding templates which allows us to easily layout visualizations together. Using the following code snippet we can design the layout of our visualisation dashboar
+We implemented a dashboard client that allows our real-time weather data visualization application to connect to the MQTT broker, subscribe to a topic, receive weather data from publisher devices, emit the data into the data stream, and visualize the data in an interactive dashboard.
+
+* Run the dashboard client at `dashboard_client.py`
